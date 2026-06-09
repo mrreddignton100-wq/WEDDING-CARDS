@@ -250,8 +250,16 @@ grid-template-columns:1fr;
 font-size:32px;
 }
 }
-</style>
-  /* BLIND COVER */
+/* Existing CSS */
+
+.music-btn{
+position:fixed;
+top:20px;
+right:20px;
+...
+}
+
+/* BLIND COVER */
 
 .blind-cover{
 position:fixed;
@@ -329,6 +337,11 @@ transform:translateX(100%);
 opacity:0;
 transition:.5s;
 }
+
+@media(max-width:768px){
+...
+}
+</style>
 </head>
 
 <body>
