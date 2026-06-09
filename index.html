@@ -251,9 +251,101 @@ font-size:32px;
 }
 }
 </style>
+  /* BLIND COVER */
+
+.blind-cover{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:9999;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+background:#f7f3ea;
+}
+
+.blind{
+position:absolute;
+top:0;
+width:50%;
+height:100%;
+background:linear-gradient(
+135deg,
+#173b73,
+#0f2750
+);
+transition:1.5s ease-in-out;
+}
+
+.left{
+left:0;
+}
+
+.right{
+right:0;
+}
+
+.cover-content{
+position:relative;
+z-index:2;
+text-align:center;
+color:white;
+}
+
+.cover-content h2{
+letter-spacing:3px;
+font-size:18px;
+margin-bottom:15px;
+}
+
+.cover-content h1{
+font-family:'Great Vibes',cursive;
+font-size:70px;
+margin-bottom:25px;
+}
+
+.cover-btn{
+padding:15px 35px;
+border:none;
+border-radius:40px;
+background:#c9a227;
+color:white;
+font-size:18px;
+cursor:pointer;
+}
+
+.blind-cover.open .left{
+transform:translateX(-100%);
+}
+
+.blind-cover.open .right{
+transform:translateX(100%);
+}
+
+.blind-cover.open .cover-content{
+opacity:0;
+transition:.5s;
+}
 </head>
 
 <body>
+  <div id="blindCover" class="blind-cover" onclick="openInvitation()">
+
+    <div class="blind left"></div>
+    <div class="blind right"></div>
+
+    <div class="cover-content">
+        <h2>Wedding Invitation</h2>
+        <h1>Rabiu & Zainab</h1>
+        <button class="cover-btn">
+            Open Invitation
+        </button>
+    </div>
+
+</div>
 
 <div class="music-btn" onclick="toggleMusic()">🎵</div>
 
@@ -457,6 +549,23 @@ music.play();
 }else{
 music.pause();
 }
+}
+  function openInvitation(){
+
+const cover =
+document.getElementById("blindCover");
+
+cover.classList.add("open");
+
+setTimeout(()=>{
+cover.style.display="none";
+},1600);
+
+let music =
+document.getElementById("music");
+
+music.play().catch(()=>{});
+
 }
 
 </script>
